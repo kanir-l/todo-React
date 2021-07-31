@@ -1,38 +1,124 @@
-.App {
+* {
+  font-family: monospace;
+}
+
+h1 {
+  width: 100%;
+  height: 100px;
+  background-image: url("/src/todobackground.jpeg");
+  background-position: bottom;
+  background-size: cover;
+  color: #363636;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  line-height: 100px;
+}
+
+h3 {
+  color: #484848;
+  height: 60px;
+  line-height: 60px;;
+}
+
+p {
+  width: 280px;
+}
+
+i {
+  font-size: 0.6em;
+  max-width: 280px;
+  width: 300px;
+  display: block;
+}
+
+img.garbage {
+  width: 20px;
+  display: inline-block;
+}
+
+button {
+  width: 24px;
+  height: 24px;
+  background: #e37373;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  border: 2px solid #a13636;
+  display: inline-block;
+  margin: 6px;
+}
+
+.todos {
+  min-height: 100vh;
+  background-image: url("/src/todobackground.jpeg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todos-container, .dones-container {
+  width: 45%;
+  height: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.print-dones {
+  width: 100%;
+  background-image: url("/src/todobackground.jpeg");
+  background-position: top;
+  background-size: cover;
+  padding: 10px;
+  border: 2px solid #497880;
+  border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.print-undones {
+  width: 100%;
+  background-image: url("/src/todobackground.jpeg");
+  background-position: bottom;
+  background-size: cover;
+  padding: 10px;
+  border: 2px solid #a68d32;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.print-todo-container {
+  background: #ffffff;
+  color: #636363;
+  min-width: 280px;
+  max-width: 280px;
+  height: 100px;
+  border-radius: 6px;
+  border: 1px dotted #636363;
+  margin: 10px;
+}
+
+.addtodo-container {
+  width: 100%;
+}
+
+.addtodo-container input {
+  width: 80%;
+  height: 45px;
+  border: none;
+  border-radius: 6px;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.addtodo-container button {
+  width: 100px;
+  height: 45px;
+  margin: 0 0 0 20px;
 }

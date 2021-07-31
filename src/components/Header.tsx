@@ -2,6 +2,6 @@ import React from 'react';
 
 export function Header() {
     return(
-        <h1>TodoS</h1>
+        <h1>My Todos</h1>
     )
 }
