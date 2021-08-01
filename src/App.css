@@ -11,7 +11,7 @@
   color: #191919;
   font-size: 20px;
   text-transform: uppercase;
-  margin: 0 0 2px 0;
+  margin: 0 0 1px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,8 +78,8 @@ button {
   background-position: top;
   background-size: cover;
   padding: 10px;
-  border: 2px solid #497880;
-  border-radius: 10px;
+  border: 1px solid #497880;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -91,8 +91,8 @@ button {
   background-position: bottom;
   background-size: cover;
   padding: 10px;
-  border: 2px solid #a68d32;
-  border-radius: 10px;
+  border: 1px solid #a68d32;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -117,13 +117,14 @@ button {
   width: 80%;
   height: 45px;
   border: none;
-  border-radius: 6px;
+  border-radius: 2px;
   margin: 10px 0 10px 0;
   padding: 10px;
   box-sizing: border-box;
 }
 
 .addtodo-container button {
+  border-radius: 2px;
   width: 100px;
   height: 45px;
   margin: 0 0 0 20px;
