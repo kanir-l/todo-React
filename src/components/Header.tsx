@@ -2,6 +2,8 @@ import React from 'react';
 
 export function Header() {
     return(
-        <h1>My Todos</h1>
+        <div className = "logo">
+             <img className="todo-logo" src="/todologo.png" alt="" />
+        </div>
     )
 }
