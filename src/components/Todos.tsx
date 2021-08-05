@@ -19,7 +19,7 @@ export function Todos() {
     })
     const printUndones = undoneTodos.map(todo => {
         return(
-            <PrintTodo todo={todo} deleteTodo={removeTodo} doneTodo={toggleTodo} key={todo.id} />
+            <PrintTodo todo={todo} editTodo={updateTodo} removeTodo={deleteTodo} doneTodo={toggleTodo} key={todo.id} />
         )
     })
 
@@ -28,17 +28,9 @@ export function Todos() {
     })
     const printDones = doneTodos.map(todo => {
         return(
-            <PrintTodo todo={todo} deleteTodo={removeTodo} doneTodo={toggleTodo} key={todo.id} />
+            <PrintTodo todo={todo} editTodo={updateTodo} removeTodo={deleteTodo} doneTodo={toggleTodo} key={todo.id} />
         )
     })
-
-    //Delete Todos
-    function removeTodo(id: number){
-        const index = todos.map(todo => { return todo.id }).indexOf(id)
-        todos.splice(index, 1)
-        setTodos([...todos])
-        localStorage.setItem('list', JSON.stringify([...todos]))
-    }
 
     //Add Todos
     function createTodo(title: string) {
@@ -47,11 +39,32 @@ export function Todos() {
         localStorage.setItem('list', JSON.stringify([...todos, task]))
     }
 
+    //Update Todos
+    function updateTodo(id: number, newTitle: string) {
+        const updatedTodo = todos.find(todo => 
+            todo.id === id
+        )
+        if(updatedTodo){
+            updatedTodo.title = newTitle
+        }
+        setTodos([...todos])
+        window.location.reload()
+        localStorage.setItem('list', JSON.stringify([...todos]))
+    }
+
+    //Delete Todos
+    function deleteTodo(id: number){
+        const index = todos.map(todo => { return todo.id }).indexOf(id)
+        todos.splice(index, 1)
+        setTodos([...todos])
+        localStorage.setItem('list', JSON.stringify([...todos]))
+    }
+
     //Toggle status
     function toggleTodo(id: number) {
-        const updatedTodos = todos.map(todo => todo.id === id ? { ...todo, id: todo.id, isDone: !todo.isDone } : todo)
-        setTodos(updatedTodos)
-        localStorage.setItem('list', JSON.stringify(updatedTodos))
+        const statusTodos = todos.map(todo => todo.id === id ? { ...todo, id: todo.id, isDone: !todo.isDone } : todo)
+        setTodos(statusTodos)
+        localStorage.setItem('list', JSON.stringify(statusTodos))
     }
 
     return(

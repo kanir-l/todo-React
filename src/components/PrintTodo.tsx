@@ -1,34 +1,70 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { TodoModel } from '../Models/TodoModel';
 
 interface IPrintTodoProps{
     todo: TodoModel
 
-    deleteTodo(id: number): void
+    removeTodo(id: number): void
+
+    editTodo(id: number, newtitle: string): void
 
     doneTodo(id: number): void
 }
 
 export function PrintTodo(props: IPrintTodoProps) {
 
-    function handleDelete(id: number) {
-        props.deleteTodo(id)
-    }
-
+    //Add
     const created = (new Date(props.todo.created)).toLocaleString()
 
+    //Delete
+    function handleRemove(id: number) {
+        props.removeTodo(id)
+    }
+
+    //Edit
+    const [edits, setEdits] = useState<boolean>(false)
+    function handleEdit(id: number) {
+        setEdits(!edits)
+    }
+
+    const [newTitle, setNewTitle] = useState("")
+    function inputNewTitle(e: ChangeEvent<HTMLInputElement>) {
+        setNewTitle(e.target.value)
+    }
+
+    function handleSave(id: number, newTitle: string) {
+        props.editTodo(id, newTitle)
+    }
+
+    //Status
     function handleDone(id: number) {
         props.doneTodo(id)
     }
 
+    
     return(
         <div className = "print-todo-container">
-            <p>{props.todo.title}</p>
+            { edits ? 
+                <div>
+                    <input type='text' placeholder={props.todo.title} onChange={inputNewTitle} value={newTitle}/> 
+                    <button className ="save"  onClick={()=>handleSave(props.todo.id, newTitle)}>
+                        <img className ="save" src="/save.png" alt="" />
+                    </button>
+                </div> : 
+                <p>{props.todo.title}</p> 
+            }
+            
+        
             <i>{created}</i>
-            {/* <button onClick={()=>handleDelete(props.todo.id)}>Delete</button> */}
-            <img className ="garbage" src="/garbage.svg" onClick={()=>handleDelete(props.todo.id)} 
+
+            <img className ="garbage" src="/garbage.png" onClick={()=>handleRemove(props.todo.id)} 
             alt="" />
-            <button onClick={()=>handleDone(props.todo.id)}></button>
+
+             <img className ="edit" src="/edit.png" onClick={()=>handleEdit(props.todo.id)} 
+            alt="" />
+
+            <img className ="activate" src="/activate.svg" onClick={()=>handleDone(props.todo.id)} 
+            alt="" />
         </div>
     )
 }
