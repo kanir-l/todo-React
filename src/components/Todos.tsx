@@ -67,6 +67,13 @@ export function Todos() {
         localStorage.setItem('list', JSON.stringify(statusTodos))
     }
 
+    //Reset the list to uncompleted
+    function resetList() {
+        const listReset = todos.map(todo => todo ? { ...todo, isDone: false } : todo)
+        setTodos(listReset)
+        localStorage.setItem('list', JSON.stringify(listReset))
+    }
+
     return(
         <React.Fragment>
             <div className = "todos">
@@ -78,6 +85,7 @@ export function Todos() {
 
                 <div className = "dones-container">
                     <h3>Completed todos</h3>
+                    <button className="reset-list" onClick={resetList}>Reset</button>
                     <div className="print-dones">{printDones}</div>
                 </div>
             </div>
