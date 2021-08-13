@@ -56,7 +56,7 @@ img.garbage, img.edit, img.activate {
   text-align: center;
 }
 
-.todos-container, .dones-container {
+.todos-container, .completedtodos-container {
   width: 49%;
   height: auto;
   display: inline;

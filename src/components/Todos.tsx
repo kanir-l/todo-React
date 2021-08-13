@@ -94,10 +94,11 @@ export function Todos() {
                 <div className = "todos-container">
                     <h3>All todos</h3>
                     <div className="print-undones">{printUndones}</div>
+
                     <AddTodo saveTodo={createTodo} />
                 </div>
 
-                <div className = "dones-container">
+                <div className = "completedtodos-container">
                     <h3>Completed todos</h3>
 
                     <button className="reset-list" onClick={resetList}>Reset</button>
