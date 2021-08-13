@@ -74,6 +74,20 @@ export function Todos() {
         localStorage.setItem('list', JSON.stringify(listReset))
     }
 
+    //Sorting
+    function sortingList(event: React.ChangeEvent<HTMLSelectElement>) {
+        if (event.target.value === "Oldest") {
+            const sortingOldest = todos.sort((x, y) => +new Date(x.created) - +new Date(y.created))
+            setTodos(sortingOldest)
+            localStorage.setItem('list', JSON.stringify(sortingOldest))
+        } else {
+            const sortingNewest = todos.sort((x, y) => +new Date(y.created) - +new Date(x.created))
+            setTodos(sortingNewest)
+            localStorage.setItem('list', JSON.stringify(sortingNewest))
+        }
+        window.location.reload()
+    }
+
     return(
         <React.Fragment>
             <div className = "todos">
@@ -85,7 +99,15 @@ export function Todos() {
 
                 <div className = "dones-container">
                     <h3>Completed todos</h3>
+
                     <button className="reset-list" onClick={resetList}>Reset</button>
+
+                    <select className="sorting-list" name="Sorting" id="sorting" onChange={sortingList}>
+                        <option >Sorting</option>
+                        <option value="Newest">Newest</option>
+                        <option value="Oldest">Oldest</option>
+                    </select>
+
                     <div className="print-dones">{printDones}</div>
                 </div>
             </div>

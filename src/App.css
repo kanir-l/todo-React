@@ -73,6 +73,17 @@ img.garbage, img.edit, img.activate {
   border: none;
 }
 
+.sorting-list {
+  height: 30px;
+  width: 90px;
+  position: absolute;
+  right: 100px;
+  top: 135px;
+  background: #966868;
+  color: #ffffff;
+  border: none;
+}
+
 .print-dones {
   width: 100%;
   background-image: url("/src/containerbg.jpg");
